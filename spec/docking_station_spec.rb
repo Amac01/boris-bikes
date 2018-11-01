@@ -17,4 +17,7 @@ describe DockingStation do
   it "check whether bike method exists" do
     expect(subject).to respond_to(:bike)
   end
+  it "raises an error when there are no bikes to release" do
+    expect{subject.release_bike}.to raise_error 'no bikes to release'
+  end
 end
