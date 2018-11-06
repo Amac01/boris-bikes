@@ -20,9 +20,16 @@ describe DockingStation do
   it "raises an error when there are no bikes to release" do
     expect{subject.release_bike}.to raise_error 'no bikes to release'
   end
-    it "raises an error when there is a bike already in the dock" do
-      subject.dock(Bike.new)
-      expect{subject.dock Bike.new}.to raise_error 'no capacity'
+    # it "raises an error when there is a bike already in the dock" do
+    #   subject.dock(Bike.new)
+    #   expect {subject.dock Bike.new}.to raise_error 'no capacity'
+    # end
+    it "raises an error when in full capacity" do
+      20.times { subject.dock Bike.new }
+      expect {subject.dock Bike.new }.to raise_error 'Docking station full capacity'
+    end
+    it "docking station to have a default capacity of 20 bikes" do
+
     end
 
 end
